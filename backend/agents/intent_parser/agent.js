@@ -1,15 +1,7 @@
-import fs from "fs/promises";
-import path from "path";
 
 import llmJson from "../../config/llm.js";
 import { emitToUser } from "../../config/socket.js";
-
-const PROMPT_PATH = path.join(
-  process.cwd(),
-  "agents",
-  "intent_parser",
-  "prompt.txt"
-);
+import { intent_parser_prompt } from "./prompt.js";
 
 const DEFAULT_THEME = {
   backgroundColor: "#000000",
@@ -115,7 +107,7 @@ export async function parsePresentationIntent(userPrompt = "", userId = null) {
       };
     }
 
-    const systemPrompt = await fs.readFile(PROMPT_PATH, "utf-8");
+    const systemPrompt = intent_parser_prompt;
 
     if (userId) {
       emitToUser(userId, "agent:intent:start", {

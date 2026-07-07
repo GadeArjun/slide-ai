@@ -1,16 +1,9 @@
-import fs from "fs/promises";
-import path from "path";
-
 import llmJson from "../../config/llm.js";
 import { addProjectLog, updateSlide } from "../../services/project.service.js";
 import { emitToUser } from "../../config/socket.js";
+import { per_slide_content_prompt } from "./prompt.js";
 
-const PROMPT_PATH = path.join(
-  process.cwd(),
-  "agents",
-  "per_slide_content",
-  "prompt.txt"
-);
+
 
 const MAX_PARALLEL_SLIDES = Number(
   process.env.SLIDE_CONTENT_PARALLEL_LIMIT || 10
@@ -285,7 +278,7 @@ export async function generateSlidesContent({
       };
     }
 
-    const systemPrompt = await fs.readFile(PROMPT_PATH, "utf-8");
+    const systemPrompt = per_slide_content_prompt;
 
     /**
      * FINAL RESULT

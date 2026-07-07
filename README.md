@@ -2,7 +2,7 @@
 
 ### Generate Beautiful AI-Powered PowerPoint Presentations in Seconds
 
-#### 🌐 Live Demo: https://slideai-h19h.onrender.com/
+#### 🌐 Live Demo: https://slide-ai-two.vercel.app/
 
 AI-driven MERN stack platform that converts simple prompts into fully designed PowerPoint presentations with real-time generation pipelines, intelligent slide planning, editable slides, and modern presentation templates.
 
